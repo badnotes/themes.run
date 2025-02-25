@@ -1,0 +1,91 @@
+---
+// Components
+// - Layout
+import Layout from '../../layouts/Layout.astro'
+import Section from '../../components/ui/Section.astro'
+import Row from '../../components/ui/Row.astro'
+import Col from '../../components/ui/Col.astro'
+// - UI
+import Spacer from '../../components/ui/Spacer.astro'
+import Button from '../../components/ui/Button.astro'
+import { Icon } from 'astro-icon/components'
+
+// Content
+// - SEO
+const SEO = {
+	title: 'About! Foxi Lost the Trail',
+	description:
+		" Looks like we chased our tail and lost the page. Don't worry, let's get you back on the Foxi trail!"
+}
+---
+
+<Layout title={SEO.title} description={SEO.description}>
+	<Section>
+		<Row flex classes="text-center">
+			<Col span="2" />
+			<Col span="8">
+				<div class="text-left list-none">
+<h3>关于 Themes.run</h3>
+<p>—— 让创作回归本质</p>
+
+<h5>🌌 我们的诞生</h5>
+在数字创作变得复杂化的时代，三位设计师与开发者发现：
+<li>90%的创作者在项目初期因空白画布焦虑而流失灵感，</li>
+<li>76%的非设计背景用户因工具门槛放弃视觉表达。</li>
+<li>于是我们建立这个平台——用精心架构的模板系统，置换出属于你的创作黄金时间</li>
+
+<h5 class="mt-5">⚙️ 核心方法论</h5>
+模块化创造力引擎
+
+<li>精准定位系统：22个行业分类 × 143种使用场景矩阵</li>
+<li>动态适配技术：智能识别用户内容生成版式建议</li>
+<li>开放实验室：每周新增模板通过创作者社区投票上架</li>
+
+<h5 class="mt-5">✨ 用户故事墙</h5>
+[动态插入用户案例模块]
+<li>▌教育博主@Elena："用知识图谱模板将课程设计效率提升300%，现在学生说我的课件像科幻电影界面"</li>
+<li>▌创业团队@FutureLab："路演模板库直接生成投资人偏好版式，种子轮融资BP通过率提高45%"</li>
+
+<h5 class="mt-5">🧭 设计哲学</h5>
+「约束产生创造力」
+我们相信：
+
+<li>好的框架不是限制，而是对抗混乱的武器</li>
+<li>80%的重复劳动应该被预制，让20%的核心创意迸发火花</li>
+<li>每个模板都留有「破坏性改造入口」——点击模板右上角的[⚡]符号开启</li>
+
+<h5 class="mt-5">🌍 生态构建</h5>
+正在发生的改变：
+
+<li>与Adobe等企业共建「模板开源计划」</li>
+<li>年度Template Awards挖掘模板创作明星</li>
+<li>高校设计思维课程指定协作平台</li>
+
+<h5 class="mt-5">🚀 创始团队</h5>
+[团队照片墙动态拼图]
+<li>来自Google Design Sprint团队 × 米兰交互双年展策展人 × SaaS产品增长专家</li>
+<li>共同信仰：当工具足够聪明，人人都能成为造物主</li>
+
+<h5 class="mt-5">📮 开启对话</h5>
+[悬浮动态邮件图标]
+<li>需要定制化模板解决方案？</li>
+<li>我们的企业服务团队已为联合国数字峰会、特斯拉产品发布会等提供专项支持</li>
+
+<h5 class="mt-5">🔗 延伸探索</h5>
+[智能推荐按钮]
+<li>▌ 深度了解我们的内容安全系统</li>
+<li>▌ 下载《2024视觉叙事趋势报告</li>
+<li>▌ 加入模板创作者联盟</li>
+                </div>
+			</Col>
+			<Col span="2" />
+		</Row>
+		<Row flex classes="text-center items-center justify-center">
+			<Col span="2" />
+			<Col span="8">
+				<Spacer size="2" desktopSize="4" />
+			</Col>
+			<Col span="2" />
+		</Row>
+	</Section>
+</Layout>

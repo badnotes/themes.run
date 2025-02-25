@@ -1,0 +1,63 @@
+---
+// Blog Index Page
+// ------------
+// Description: The blog index page.
+
+// Components
+// - Layout
+import Layout from '../../layouts/Layout.astro'
+// - UI
+import Hero from '../../components/blocks/hero/PageHeader.astro'
+import BlogPosts from '../../components/blocks/blog/BlogPosts.astro'
+import Pagination from '../../components/ui/Pagination.astro'
+
+// Data
+import { getCollection } from 'astro:content'
+import type { Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+// Content
+// - SEO
+const SEO = {
+	title: 'Themes | run first and fast.',
+	description:
+		"Astro is a JavaScript web framework optimized for building fast, content-driven websites. "
+}
+// - Page Header
+const header = {
+	title: '<strong>Astro</strong> is a JavaScript web framework optimized for building fast, content-driven websites.',
+	text: '<strong>npx create-next-app --example https://github.com/username/repo test-app</strong>'
+}
+
+// const allPosts = await getCollection('blog')
+
+export async function getStaticPaths({ paginate }: any) {
+  const tp = "next"
+  const allPosts = (await getCollection("blog", ({ id }: any) => true));
+  const formattedPosts = allPosts
+  .filter(v => v.slug.startsWith(tp))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  
+  return paginate(formattedPosts, {
+      pageSize: 3,
+  });
+}
+interface Props {
+	page: Page<CollectionEntry<"blog">>;
+}
+
+const { page } = Astro.props;
+---
+
+<Layout title={SEO.title} description={SEO.description}>
+	<Hero title={header.title} text={header.text} />
+	<BlogPosts data={page.data} type="next"/>
+	<Pagination
+    length={page.lastPage}
+    currentUrl={page.url.current}
+    currentPage={page.currentPage}
+    firstUrl={`/`}
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+    lastUrl={`/${page.lastPage}`}
+  />
+</Layout>

@@ -1,0 +1,111 @@
+---
+// Blog Card
+// ------------
+// Description: The blog card component
+// Properties:
+// - Title: the title of the card
+// - Subtitle: the subtitle of the card
+// - Image: the main image of the card
+// - Icon: the icon of the card
+// - Link: The link to the blog post
+// - classes: extra classes
+// - Tags: the tags of the blog post
+// Reference: https://wind-ui.com/components/cards/
+
+// Components
+// - UI
+import { Image } from 'astro:assets'
+import Card from './partials/Card.astro'
+import CardBody from './partials/CardBody.astro'
+import Badge from '../Badge.astro'
+import Row from '../Row.astro'
+
+// Props
+type Props = {
+	title?: string
+	subtitle?: string
+	image?: any
+	link?: string
+	classes?: string
+	tags?: string[],
+	price: string,
+	license: string,
+	git: string,
+	web: string,
+}
+const {
+	title = '',
+	subtitle,
+	image,
+	link,
+	classes = '!shadow-none border border-neutral-300 dark:border-neutral-800',
+	tags,
+	price,
+	license,
+	git,
+	web
+} = Astro.props
+---
+
+<Card classes={classes}>
+	<a href={link} class="flex flex-col">
+	<!-- {image && <Image src={image} alt={title} width={400} height={160} />} -->
+	<Image
+		width={360}
+		height={240}
+		transition:name={title}
+		loading="lazy"
+		src={image}
+		alt={`${title} cover pic`}
+		class="h-64 w-full transition-transform hover:scale-105"
+		/>
+	<CardBody>
+		<h3 class="post-title">
+			<span>{title}</span>
+		</h3>
+		<div class="post-subtitle">{subtitle}</div>
+		<slot />
+	</CardBody>
+	</a>
+	<div class="grid grid-cols-12 border-t border-neutral-300 px-2 py-2 dark:border-neutral-800">
+		{
+			tags && (
+				<div class="post-tags col-span-8">
+					{tags.map((tag: string) => (
+						<Badge name={tag} link={`/t/` + tag} classes="capitalize" />
+					))}
+				</div>
+			)
+		}
+		<div class="col-span-4 grid grid-cols-12">
+			<div class="col-span-6 bg-indigo-200 text-neutral-500 dark:bg-indigo-800 dark:text-neutral-500 ml-1 mr-1 pl-2 pr-2">{price}</div>
+			<div class="col-span-6 bg-indigo-200 text-neutral-500 dark:bg-indigo-800 dark:text-neutral-500 ml-1 mr-1 pl-2 pr-2">{license}</div>
+		</div>
+	</div>
+	<div class="grid grid-cols-12 px-2 py-2 underline decoration-violet-300 text-lg text-neutral-500 dark:text-neutral-500 dark:decoration-violet-800">
+		<div class="col-span-4 grid grid-cols-12">
+			<div class="col-span-6 bg-neutral-100 dark:bg-neutral-800 ml-auto mr-1 pl-2 pr-2">
+				<a href={web} target="_blank">Demo</a>
+			</div>
+		</div>
+		<div class="col-span-8 grid grid-cols-12">
+			<div class="col-span-6">
+			</div>
+			<div class="col-span-6 bg-neutral-100 dark:bg-neutral-800 ml-auto mr-1 pl-2 pr-2">
+				<a href={git} target="_blank">Github</a>
+			</div>
+		</div>
+	</div>
+</Card>
+
+<style>
+	.post-title {
+		@apply mb-0 text-xl [&_a]:text-inherit;
+	}
+	.post-subtitle {
+		@apply mb-2 text-sm font-normal text-neutral-400 dark:text-neutral-400;
+	}
+	.post-tags {
+		@apply flex gap-2 ;
+	}
+</style>

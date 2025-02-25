@@ -1,0 +1,132 @@
+---
+// Imports
+const { frontmatter } = Astro.props
+
+//Layout Components
+import Layout from './Layout.astro'
+
+// Section Components
+import BlogPostHero from '../components/blocks/blog/BlogPostHero.astro'
+
+// Content
+// - SEO
+const SEO = {
+	title: `${frontmatter.title} | Foxi`,
+	description: `${frontmatter.description}`
+}
+
+console.log("frontmatter:", frontmatter)
+---
+
+<Layout title={SEO.title} description={SEO.description}>
+	<BlogPostHero
+		tags={frontmatter.tags}
+		title={frontmatter.title}
+		author={frontmatter.author}
+		publishDate={frontmatter.pubDate.toLocaleDateString('en-US', {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric'
+		})}
+	/>
+
+	<div class="border border-slate-300 border-b-0 mt-0"></div>
+	<div class="post-body basic-text basic-text--lg">
+
+		<div class="grid grid-cols-10 gap-2 mt-5 ">
+		  <img class="blog-img-view bg-white col-span-10 md:col-span-8 h-auto w-full max-w-full rounded-lg object-cover object-center md:h-[480px]"
+			  src={frontmatter.images[0].src} 
+			  alt={frontmatter.images[0].alt} />
+		  <div class="grid gap-0 col-span-10 grid-cols-5 md:grid-cols-2 md:col-span-2">
+			{frontmatter.images?.map( (el: any) => {
+			  return(
+				  <img
+					src={el.src}
+					class="blog-img-button border object-cover object-center h-24 w-36 max-w-full rounded-lg cursor-pointer" 
+					alt={el.alt} />
+			  )})}
+		  </div>
+		</div>
+
+		<slot />
+	</div>
+</Layout>
+
+
+<script>
+	/** Attaches copy buttons to code blocks in the document,
+	 * allowing users to copy code easily. */
+	document.addEventListener("astro:page-load", () => {
+	  function attachCopyButtons() {
+		const copyButtonLabel = "Copy 📋";
+		const codeBlocks = Array.from(document.querySelectorAll("pre"));
+  
+		for (const codeBlock of codeBlocks) {
+		  const wrapper = document.createElement("div");
+		  wrapper.style.position = "relative";
+  
+		  const copyButton = document.createElement("button");
+		  copyButton.className =
+			"copy-code absolute right-3 -top-4 rounded bg-primary p-2 text-base leading-4 text-skin-base font-medium";
+		  copyButton.innerHTML = copyButtonLabel;
+		  codeBlock.setAttribute("tabindex", "0");
+		  codeBlock.appendChild(copyButton);
+  
+		  // wrap codebock with relative parent element
+		  codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
+		  wrapper.appendChild(codeBlock);
+  
+		  copyButton.addEventListener("click", async () => {
+			await copyCode({ block: codeBlock, button: copyButton });
+		  });
+		}
+  
+		async function copyCode({
+		  block,
+		  button,
+		}: {
+		  block: HTMLPreElement;
+		  button: HTMLButtonElement;
+		}) {
+		  const code = block.querySelector("code");
+		  const text = code?.innerText;
+  
+		  await navigator.clipboard.writeText(text ?? "");
+  
+		  // visual feedback that task is completed
+		  button.innerText = "Copied ✅";
+  
+		  setTimeout(() => {
+			button.innerText = copyButtonLabel;
+		  }, 1000);
+		}
+	  }
+  
+	  attachCopyButtons();
+  
+	  // 找到页面上的组件 DOM。
+	  const buttons = document.querySelectorAll('.blog-img-button');
+	  const view = document.querySelectorAll('.blog-img-view');
+  
+	  // 当 button 被点击时，添加事件监听器来触发 confetti。
+	  buttons.forEach((button) => {
+		button.addEventListener('click', () => {
+		  view.forEach(v => {
+			if (button instanceof HTMLImageElement) {
+			  v.setAttribute("src", button.src)
+			}
+		  })
+		});
+	  });
+	});
+  
+</script>
+
+
+<style>
+	.post-body {
+		@apply mx-auto max-w-5xl px-12 py-48 lg:py-72;
+		margin-top: 0rem !important;
+		padding-top: 5px !important;
+	}
+</style>

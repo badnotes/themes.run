@@ -1,0 +1,25 @@
+---
+// Card body
+// ------------
+// Description: the body of the main content of the card
+// Properties:
+// - classes: extra classes
+
+// Props
+type Props = {
+	classes?: string
+}
+const { classes } = Astro.props
+---
+
+<div class:list={['card__body', { [`${classes}`]: classes }]}>
+	<slot />
+</div>
+
+<style>
+	.card__body {
+		@apply px-4 pt-1 pb-1;
+	}
+	.card__body h4 {
+	}
+</style>

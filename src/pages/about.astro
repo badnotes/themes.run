@@ -1,0 +1,95 @@
+---
+// Components
+// - Layout
+import Layout from '../layouts/Layout.astro'
+import Section from '../components/ui/Section.astro'
+import Row from '../components/ui/Row.astro'
+import Col from '../components/ui/Col.astro'
+// - UI
+import Spacer from '../components/ui/Spacer.astro'
+import Button from '../components/ui/Button.astro'
+import { Icon } from 'astro-icon/components'
+
+// Content
+// - SEO
+const SEO = {
+	title: 'About! Themes.run',
+	description:
+		"The themes.run, your creative accelerator. From template to masterpiece, just a little inspiration from you."
+}
+---
+
+<Layout title={SEO.title} description={SEO.description}>
+	<Section>
+		<Row flex classes="text-center">
+			<Col span="2" />
+			<Col span="8">
+				<div class="text-left list-none">
+<h3>About eDriveHub</h3>
+<p>—— Driving a green future, start from here</p>
+
+<h5>Who are we? </h5>
+<p>
+eDriveHub was born out of a firm belief in a sustainable future. <br />
+We are a global platform focusing on new energy electric vehicles, committed to becoming a core hub connecting technology innovators, environmental advocates and every traveler. <br />
+Here, knowledge and action intersect, and ideals and reality go hand in hand.
+</p>
+
+<h5>Our mission</h5>
+<div class="mb-2">
+"Let every drive become a gentle promise to the earth."
+</div>
+<li>🌱 Promote the green revolution: accelerate the popularization of electric vehicles and reduce carbon emissions through in-depth content and data insights. </li>
+<li>🔋 Decode the forefront of technology: from battery innovation to smart driving, make complex technology within reach. </li>
+<li>🤝 Gather community power: Build a dialogue platform for global electric vehicle enthusiasts, companies and policymakers. </li>
+<br/>
+<h5>Why choose us? </h5>
+<div class="mb-2">
+1. More than just information, it’s also a guide to action
+</div>
+<li>Provide global electric vehicle policy interpretation, vehicle model comparison and charging network map to help you make a wise choice. </li>
+<li>Real-time tracking of industry summits and technological breakthroughs (such as solid-state batteries, V2G energy interconnection) keeps you one step ahead. </li>
+<br/>
+<div class="mb-2">
+2. Science-based and user-oriented
+</div>
+<li>Join engineers, environmental organizations and independent evaluation agencies to ensure objective and authoritative content. </li>
+<li>Open the "Owner Laboratory" and invite users to participate in real-life endurance tests and function feedback to promote product evolution. </li>
+<br/>
+<div class="mb-2">
+3. A green community for everyone
+</div>
+<li>Share your charging skills, modification experience or cross-city routes in the "Driver Forum". </li>
+<li>Launch the "Zero Carbon Challenge", record your personal carbon footprint, and create environmental milestones with global users. </li>
+<br/>
+<h5>Our Commitment</h5>
+
+<li>♻️ Transparency and responsibility: disclose content partners and data sources, and reject "greenwashing" marketing. </li>
+<li>🌍 Moving towards zero emissions: The website operation is powered by 100% renewable energy, and 5% of the profit is donated to clean energy charity projects. </li>
+<br/>
+<h5>Join this revolution</h5>
+<div class="mb-2">
+Whether you are an explorer who is paying attention to electric vehicles for the first time, or a professional who is deeply involved in the industry, there is a place for you here: </div>
+<li>📩 Subscribe to the weekly briefing: Get exclusive analysis, limited-time test drive opportunities and policy bonus reminders. </li>
+<li>💡 Become a contributor: share your stories, technical insights or investment views, and influence tens of millions of users. </li>
+<li>🤖 Experience the tools of the future: Try our Carbon Footprint Calculator and Smart Car Selection Assistant. </li>
+<br/>
+<div class="border border-dashed border-slate-700"></div>
+<br/>
+<p>
+The eDriveHub team <br/>
+—— "We believe that the world on wheels will eventually resonate in harmony with nature."
+</p>
+                </div>
+			</Col>
+			<Col span="2" />
+		</Row>
+		<Row flex classes="text-center items-center justify-center">
+			<Col span="2" />
+			<Col span="8">
+				<Spacer size="2" desktopSize="4" />
+			</Col>
+			<Col span="2" />
+		</Row>
+	</Section>
+</Layout>
