@@ -23,8 +23,9 @@ type Props = {
 	title: string
 	author?: string
 	publishDate?: string
+	tp: string
 }
-const { tags, title, author, publishDate } = Astro.props
+const { tags, title, author, publishDate, tp } = Astro.props
 ---
 
 <Section id="post-intro" classes="bg-neutral-50 dark:bg-neutral-900">
@@ -49,7 +50,7 @@ const { tags, title, author, publishDate } = Astro.props
 				tags && (
 					<div class="post-header__tags">
 						{tags.map((tag: string) => (
-							<Badge name={tag} link={`/t/` + tag} classes="capitalize" />
+							<Badge name={tag} link={`/${tp}/` + tag} classes="capitalize" />
 						))}
 					</div>
 				)

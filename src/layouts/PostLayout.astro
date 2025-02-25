@@ -11,7 +11,7 @@ import BlogPostHero from '../components/blocks/blog/BlogPostHero.astro'
 // Content
 // - SEO
 const SEO = {
-	title: `${frontmatter.title} | Foxi`,
+	title: `${frontmatter.title} | Themes.`,
 	description: `${frontmatter.description}`
 }
 
@@ -28,24 +28,46 @@ console.log("frontmatter:", frontmatter)
 			month: 'long',
 			day: 'numeric'
 		})}
+		tp={frontmatter.type.toLowerCase()}
 	/>
 
 	<div class="border border-slate-300 border-b-0 mt-0"></div>
 	<div class="post-body basic-text basic-text--lg">
 
-		<div class="grid grid-cols-10 gap-2 mt-5 ">
-		  <img class="blog-img-view bg-white col-span-10 md:col-span-8 h-auto w-full max-w-full rounded-lg object-cover object-center md:h-[480px]"
+		<div class="grid grid-cols-10 gap-2 mt-5 mb-6">
+		  <img class="blog-img-view bg-white col-span-10 md:col-span-8 h-auto w-full max-w-full rounded-lg object-cover object-center md:h-[500px]"
 			  src={frontmatter.images[0].src} 
 			  alt={frontmatter.images[0].alt} />
-		  <div class="grid gap-0 col-span-10 grid-cols-5 md:grid-cols-2 md:col-span-2">
+		  <div class="grid gap-1 col-span-10 grid-cols-5 md:grid-cols-1 md:col-span-2 ml-auto">
 			{frontmatter.images?.map( (el: any) => {
 			  return(
 				  <img
 					src={el.src}
-					class="blog-img-button border object-cover object-center h-24 w-36 max-w-full rounded-lg cursor-pointer" 
+					class="blog-img-button border object-cover object-center h-24 w-40 max-w-full rounded-lg cursor-pointer" 
 					alt={el.alt} />
 			  )})}
 		  </div>
+		</div>
+		<div class="grid grid-cols-12 gap-2 text-lg text-neutral-500 dark:text-neutral-500 dark:decoration-violet-800 mb-10">
+			<div class="col-span-6 grid grid-cols-12 gap-2">
+				<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center">{frontmatter.price}</div>
+				<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center">{frontmatter.license}</div>
+			</div>
+			<div class="col-span-6 grid grid-cols-12 underline decoration-violet-300 gap-2">
+				<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center">
+					<a href={frontmatter.web} target="_blank">Demo</a>
+				</div>
+				<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center">
+					<a href={frontmatter.git} target="_blank">Github</a>
+				</div>
+	
+				<!-- <div class="col-span-6 bg-neutral-100 dark:bg-neutral-800 ml-auto mr-1 pl-2 pr-2"> -->
+					<!-- <a href={"web"} target="_blank">Demo</a> -->
+				<!-- </div> -->
+				<!-- <div class="col-span-6 bg-neutral-100 dark:bg-neutral-800 ml-auto mr-1 pl-2 pr-2"> -->
+					<!-- <a href={"git"} target="_blank">Github</a> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<slot />
