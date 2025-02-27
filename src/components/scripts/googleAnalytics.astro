@@ -1,9 +1,10 @@
 ---
 // Google Analytics tracking script
 import { googleAnalyticsMeasurementID } from '../../../src/config/analytics.ts'
+const goId = "G-ZNL6PT70C4"
 ---
 
-<script
+<!-- <script
 	type="text/partytown"
 	src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsMeasurementID}`}></script>
 
@@ -15,4 +16,17 @@ import { googleAnalyticsMeasurementID } from '../../../src/config/analytics.ts'
 	}
 	gtag('js', new Date())
 	gtag('config', measurementId)
+</script> -->
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src={`https://www.googletagmanager.com/gtag/js?id=${goId}`}></script>
+<script type="text/partytown">
+	window.dataLayer = window.dataLayer || []
+	function gtag() {
+		dataLayer.push(arguments) // eslint-disable-line
+	}
+	gtag('js', new Date())
+	gtag('config', goId)
 </script>
