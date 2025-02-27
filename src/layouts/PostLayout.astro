@@ -38,7 +38,7 @@ console.log("frontmatter:", frontmatter)
 		  <img class="blog-img-view bg-white col-span-10 md:col-span-8 h-auto w-full max-w-full rounded-lg object-cover object-center md:h-[500px]"
 			  src={frontmatter.images[0].src} 
 			  alt={frontmatter.images[0].alt} />
-		  <div class="grid gap-1 col-span-10 grid-cols-5 md:grid-cols-1 md:col-span-2 ml-auto">
+		  <div class="grid gap-1 col-span-10 grid-cols-5 md:grid-cols-1 md:grid-rows-5 md:col-span-2 ml-auto">
 			{frontmatter.images?.map( (el: any) => {
 			  return(
 				  <img

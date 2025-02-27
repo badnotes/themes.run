@@ -11,11 +11,15 @@ import Layout from '../layouts/PostLayout.astro'
 import { getCollection, render  } from 'astro:content'
 export async function getStaticPaths() {
 	const blogEntries = await getCollection('blog')
-	return blogEntries.map((entry) => ({
-		// params:{ id: decodeURI( entry.id )},
-		params: { slug: entry.slug },
-		props: { entry }
-	}))
+	return blogEntries.map((entry) => {
+		const vs = entry.slug.split("/")
+		vs[vs.length-1] = vs[vs.length-1].substring(9)
+		const slug = vs.join("/")
+		return {
+			// params:{ id: decodeURI( entry.id )},
+			params: { slug: slug },
+			props: { entry }
+		}})
 }
 const { entry } = Astro.props
 const { Content } = await render(entry);
