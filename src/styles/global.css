@@ -39,19 +39,19 @@ h6 {
 }
 
 h1 {
-	@apply text-4xl lg:text-6xl;
+	@apply text-3xl lg:text-4xl;
 }
 
 h2 {
-	@apply text-3xl lg:text-5xl;
-}
-
-h3 {
 	@apply text-2xl lg:text-3xl;
 }
 
-h4 {
+h3 {
 	@apply text-xl lg:text-2xl;
+}
+
+h4 {
+	@apply text-lg lg:text-xl;
 }
 
 h5 {
