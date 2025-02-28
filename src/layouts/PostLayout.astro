@@ -35,7 +35,7 @@ console.log("frontmatter:", frontmatter)
 	<div class="post-body basic-text basic-text--lg">
 
 		<div class="grid grid-cols-10 gap-2 mt-5 mb-6">
-		  <img class="blog-img-view bg-white col-span-10 md:col-span-8 h-auto w-full max-w-full rounded-lg object-cover object-center md:h-[500px]"
+		  <img class="blog-img-view bg-white col-span-10 md:col-span-8 h-auto w-full max-w-full rounded-lg object-cover object-center md:h-[500px]  p-0.5 bg-stone-100"
 			  src={frontmatter.images[0].src} 
 			  alt={frontmatter.images[0].alt} />
 		  <div class="grid gap-1 col-span-10 grid-cols-5 md:grid-cols-1 md:grid-rows-5 md:col-span-2 ml-auto">
@@ -43,7 +43,7 @@ console.log("frontmatter:", frontmatter)
 			  return(
 				  <img
 					src={el.src}
-					class="blog-img-button border object-cover object-center h-24 w-40 max-w-full rounded-lg cursor-pointer" 
+					class="blog-img-button border object-cover object-center h-24 w-40 max-w-full rounded-lg cursor-pointer p-0.5 bg-stone-100 " 
 					alt={el.alt} />
 			  )})}
 		  </div>
