@@ -13,7 +13,7 @@ import BlogPosts from '../../components/blocks/blog/BlogPosts.astro'
 // Data
 import { getCollection } from 'astro:content'
 export async function getStaticPaths() {
-	const tp = "astro"
+	const tp = "next"
 	const allPosts = await getCollection('blog')
 	const formattedPosts = allPosts
 	.filter(v => v.slug.startsWith(tp)).map(v => {
