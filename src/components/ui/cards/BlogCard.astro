@@ -32,6 +32,7 @@ type Props = {
 	license: string,
 	git: string,
 	web: string,
+	typ: string,
 }
 const {
 	title = '',
@@ -43,7 +44,8 @@ const {
 	price,
 	license,
 	git,
-	web
+	web,
+	typ
 } = Astro.props
 ---
 
@@ -72,7 +74,7 @@ const {
 			tags && (
 				<div class="post-tags col-span-8">
 					{tags.map((tag: string) => (
-						<Badge name={tag} link={`/t/` + tag} classes="capitalize" />
+						<Badge name={tag} link={`/${typ}/` + tag} classes="capitalize" />
 					))}
 				</div>
 			)
@@ -88,7 +90,7 @@ const {
 				<a href={web} target="_blank">Demo</a>
 			</div>
 			<div class="col-span-6 bg-neutral-100 dark:bg-neutral-800 ml-auto mr-1 pl-2 pr-2">
-				<a href={git} target="_blank">Github</a>
+				<a href={git} target="_blank">Source</a>
 			</div>
 		</div>
 	</div>
