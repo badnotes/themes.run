@@ -81,16 +81,14 @@ const {
 		}
 	</div>
 	<div class="grid grid-cols-12 text-lg text-neutral-500 dark:text-neutral-500 dark:decoration-violet-800">
-		<div class="col-span-6 grid grid-cols-12">
-			<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 ml-1 text-center">{price}</div>
-			<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 ml-1 text-center">{license}</div>
-		</div>
-		<div class="col-span-6 grid grid-cols-12 underline decoration-violet-300 ">
-			<div class="col-span-6 bg-neutral-100 dark:bg-neutral-800 ml-auto mr-1 pl-2 pr-2">
-				<a href={web} target="_blank">Demo</a>
-			</div>
-			<div class="col-span-6 bg-neutral-100 dark:bg-neutral-800 ml-auto mr-1 pl-2 pr-2">
+		<div class="col-span-12 grid grid-cols-12">
+			<div class="col-span-3 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 ml-1 text-center">{price}</div>
+			<div class="col-span-3 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 ml-1 text-center">{license}</div>
+			<div class="col-span-3 bg-neutral-100 dark:bg-neutral-800 ml-1 text-center underline decoration-violet-300">
 				<a href={git} target="_blank">Source</a>
+			</div>
+			<div class="col-span-3 bg-neutral-100 dark:bg-neutral-800 ml-1 text-center underline decoration-violet-300">
+				<a href={web} target="_blank">Demo</a>
 			</div>
 		</div>
 	</div>

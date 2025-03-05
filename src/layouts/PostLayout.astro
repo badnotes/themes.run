@@ -15,7 +15,6 @@ const SEO = {
 	description: `${frontmatter.description}`
 }
 
-console.log("frontmatter:", frontmatter)
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
@@ -55,10 +54,10 @@ console.log("frontmatter:", frontmatter)
 			</div>
 			<div class="col-span-6 grid grid-cols-12 underline decoration-violet-300 gap-2">
 				<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center">
-					<a href={frontmatter.web} target="_blank">Demo</a>
+					<a href={frontmatter.git} target="_blank">Source</a>
 				</div>
 				<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center">
-					<a href={frontmatter.git} target="_blank">Source</a>
+					<a href={frontmatter.web} target="_blank">Demo</a>
 				</div>
 	
 				<!-- <div class="col-span-6 bg-neutral-100 dark:bg-neutral-800 ml-auto mr-1 pl-2 pr-2"> -->
