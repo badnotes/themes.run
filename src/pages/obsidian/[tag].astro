@@ -1,0 +1,56 @@
+---
+// Blog Tag Page
+// ------------
+// Description: The blog tag page.
+
+// Components
+// - Layout
+import Layout from '../../layouts/Layout.astro'
+// - UI
+import Hero from '../../components/blocks/hero/PageHeader.astro'
+import BlogPosts from '../../components/blocks/blog/BlogPosts.astro'
+
+// Data
+import { getCollection } from 'astro:content'
+export async function getStaticPaths() {
+	const tp = "obsidian"
+	const allPosts = await getCollection('blog')
+	const formattedPosts = allPosts
+	.filter(v => v.slug.startsWith(tp)).map(v => {
+		const vs = v.slug.split("/")
+		vs[vs.length-1] = vs[vs.length-1].substring(9)
+		v.slug = vs.join("/")
+		return v;
+	})
+	const uniqueTags = [...new Set(formattedPosts.map((post) => post.data.tags).flat())]
+
+	return uniqueTags.map((tag: any) => {
+		const filteredPosts = formattedPosts.filter((post: any) => post.data.tags.includes(tag))
+		return {
+			params: { tag },
+			props: { posts: filteredPosts }
+		}
+	})
+}
+const { tag } = Astro.params
+const { posts } = Astro.props
+
+// Content
+// - SEO
+const SEO = {
+	title: `Themes.run | posts tagges as ` + tag,
+	description:
+		"Sharpen your thinking. · Your thoughts are yours."
+}
+
+// - Page Header
+const header = {
+	title: `<strong>` + tag + `</strong>`,
+	text: `Sharpen your thinking. · Your thoughts are yours.`
+}
+---
+
+<Layout title={SEO.title} description={SEO.description}>
+	<Hero title={header.title} text={header.text} />
+	<BlogPosts data={posts} type={"obsidian"}/>
+</Layout>
