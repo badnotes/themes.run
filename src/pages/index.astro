@@ -8,6 +8,14 @@ import Features from '../components/blocks/features/FeatureTechs.astro'
 import Testimonial from '../components/blocks/testimonials/BasicDark.astro'
 import HighlightBlocks from '../components/blocks/highlights/HightlightRows.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
+import { getCollection } from 'astro:content'
+
+
+const types = ["astro", "next", "hugo", "jekyll", "wordpress", "hexo", "obsidian"]
+const allPosts = (await getCollection("blog", ({ id }: any) => true));
+const typeCount = types.map((t: any) => allPosts.filter(v => v.slug.startsWith(t)).length)
+	
+// console.log("astor size:", typeCount)
 
 // Content
 // - Testimonial background
@@ -21,6 +29,6 @@ const SEO = {
 
 <Layout title={SEO.title} description={SEO.description}>
 
-	<Features />
+	<Features typeCount={typeCount}/>
 	<CTA />
 </Layout>

@@ -21,6 +21,12 @@ import logHexo from '../../../assets/cards/hexo.webp'
 import obsidian from '../../../assets/cards/obsidian.webp'
 import next from '../../../assets/cards/next.webp'
 
+// Props
+type Props = {
+	typeCount: number[]
+}
+const { typeCount: typeCount} = Astro.props
+
 const title = "The <strong>themes.</strong>run, your creative accelerator. "
 const text = "From template to masterpiece, just a little inspiration from you."
 ---
@@ -40,7 +46,7 @@ const text = "From template to masterpiece, just a little inspiration from you."
 	<Row>
 		<Col span="3" classes="flex flex-col gap-6">
 			<Card
-				title="Theme collection: Astro "
+				title=`Theme collection: Astro [${typeCount[0]}]`
 				subtitle="Astro is a JavaScript web framework optimized for building fast, content-driven websites."
 				image={logoAstro}
 				link="/astro"
@@ -48,7 +54,7 @@ const text = "From template to masterpiece, just a little inspiration from you."
 		</Col>
 		<Col span="3" classes="flex flex-col gap-6">
 			<Card
-				title="Theme collection: Next.js"
+				title=`Theme collection: Next.js [${typeCount[1]}]`
 				subtitle="The React Framework for the Web."
 				image={next}
 				link="/next"
@@ -56,7 +62,7 @@ const text = "From template to masterpiece, just a little inspiration from you."
 		</Col>
 		<Col span="3" classes="flex flex-col gap-6">
 			<Card
-				title="Theme collection: GoHugo"
+				title=`Theme collection: GoHugo [${typeCount[2]}]`
 				subtitle="The world's fastest framework for building websites."
 				image={feature04}
 				link="/hugo"
@@ -64,7 +70,7 @@ const text = "From template to masterpiece, just a little inspiration from you."
 		</Col>
 		<Col span="3" classes="flex flex-col gap-6">
 			<Card
-				title="Theme collection: Jekyll"
+				title=`Theme collection: Jekyll [${typeCount[3]}]`
 				subtitle="Jekyll • Simple, blog-aware, static sites."
 				image={logJekyll}
 				link="/jekyll"
@@ -72,7 +78,7 @@ const text = "From template to masterpiece, just a little inspiration from you."
 		</Col>
 		<Col span="3" classes="flex flex-col gap-6">
 			<Card
-				title="Theme collection: WordPress"
+				title=`Theme collection: WordPress [${typeCount[4]}]`
 				subtitle="Build a Site, Sell Your Stuff, Start a Blog & More."
 				image={logPress}
 				link="/wordpress"
@@ -80,7 +86,7 @@ const text = "From template to masterpiece, just a little inspiration from you."
 		</Col>
 		<Col span="3" classes="flex flex-col gap-6">
 			<Card
-				title="Theme collection: Hexo"
+				title=`Theme collection: Hexo [${typeCount[5]}]`
 				subtitle="Hexo is a fast, simple & powerful blog framework powered by Node.js."
 				image={logHexo}
 				link="/hexo"
@@ -88,7 +94,7 @@ const text = "From template to masterpiece, just a little inspiration from you."
 		</Col>
 		<Col span="3" classes="flex flex-col gap-6">
 			<Card
-				title="Theme collection: Obsidian"
+				title=`Theme collection: Obsidian [${typeCount[6]}]`
 				subtitle="Sharpen your thinking. · Your thoughts are yours."
 				image={obsidian}
 				link="/obsidian"
