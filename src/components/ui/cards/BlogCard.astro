@@ -31,6 +31,7 @@ type Props = {
 	price: string,
 	license: string,
 	git: string,
+	star: string,
 	web: string,
 	typ: string,
 }
@@ -44,6 +45,7 @@ const {
 	price,
 	license,
 	git,
+	star,
 	web,
 	typ
 } = Astro.props
@@ -76,6 +78,7 @@ const {
 					{tags.map((tag: string) => (
 						<Badge name={tag} link={`/${typ}/` + tag} classes="capitalize" />
 					))}
+					{star && (<Badge name={star} classes="capitalize" />)}
 				</div>
 			)
 		}
@@ -85,7 +88,7 @@ const {
 			<div class="col-span-3 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 ml-1 text-center">{price}</div>
 			<div class="col-span-3 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 ml-1 text-center">{license}</div>
 			<div class="col-span-3 bg-neutral-100 dark:bg-neutral-800 ml-1 text-center underline decoration-violet-300">
-				<a href={git} target="_blank">Source</a>
+				<a href={git} target="_blank">Code </a>
 			</div>
 			<div class="col-span-3 bg-neutral-100 dark:bg-neutral-800 ml-1 text-center underline decoration-violet-300">
 				<a href={web} target="_blank">Demo</a>

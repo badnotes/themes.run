@@ -17,6 +17,7 @@ const blog = defineCollection({
 				alt: z.string().optional(),
 			  })).optional(), // 图片
 			git: z.string().optional(), // 代码
+			star: z.number().optional(), // git start
 			web: z.string().optional(), // 效果
 			price: z.string().optional(), // 费用
 			license: z.string().optional(), // 许可
