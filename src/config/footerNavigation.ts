@@ -66,13 +66,17 @@ export const footerNavigationData: FooterData = {
 				// },
 				{
 					subCategory: 'Terms',
-					subCategoryLink: '/about'
+					subCategoryLink: '/terms'
 				}
 			]
 		},
 		{
 			category: 'About us',
 			subCategories: [
+				{
+					subCategory: 'Changelog',
+					subCategoryLink: '/changelog'
+				},
 				{
 					subCategory: 'About us',
 					subCategoryLink: '/about'

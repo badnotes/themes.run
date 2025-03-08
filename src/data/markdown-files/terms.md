@@ -1,97 +1,95 @@
-# Terms of Service
+1. 服务定义
 
-## Introduction
+1.1 本平台聚合的模板来源包括：
 
-Welcome to Foxi! By using our services, you agree to be bound by these terms and conditions. Please read them carefully.
+    ​开源模板库：遵循各模板注明的许可协议（如MIT License、CC BY-SA 4.0等）
+    ​用户生成模板：由注册用户上传的原创/二次创作内容（需符合第3章规定）
 
-## Acceptance of Terms
+1.2 您通过本平台获得的功能包括：
 
-By accessing or using Foxi, you agree to comply with and be bound by these Terms of Service and our Privacy Policy. If you do not agree with these terms, you should not use our services.
+    开源模板的介绍及引导至开源平台使用该模板
+    用户模板的版权登记存证服务（可选增值功能）
 
-## Changes to Terms
 
-We reserve the right to modify these terms at any time. We will notify you of any changes by posting the new terms on our website. Your continued use of the service after such changes constitutes your acceptance of the new terms.
+2. 开源模板使用规则
 
-## User Accounts
+2.1 您须严格遵守各模板标注的原始协议要求，包括但不限于：
 
-### Registration
+    ​署名要求：保留模板文件内的作者信息页（监测到删除行为将冻结账户）
+    ​传染性协议：使用GPL/AGPL协议模板时，衍生作品必须开源
+    ​商业限制：CC BY-NC协议模板禁止用于直接营收项目（如付费模版网站主题）
 
-To use certain features of Foxi, you may need to create an account. You agree to provide accurate and complete information when creating your account and to keep this information up-to-date.
+2.2 平台提供自动化协议检测工具，但您仍需自行验证：
 
-### Account Security
+    模板授权范围与您使用场景的兼容性
+    多协议模板组合使用时的法律风险
 
-You are responsible for maintaining the confidentiality of your account and password. You agree to notify us immediately of any unauthorized use of your account.
 
-## Use of Services
+​3. 用户上传内容
 
-### License
+3.1 上传即代表您声明并保证：
 
-We grant you a limited, non-exclusive, non-transferable, and revocable license to use our services for personal or internal business purposes.
+    拥有模板的全部知识产权或已获得原作者的再分发授权
+    不包含任何专利技术（如某些UI动效的独家算法）
+    明确标注衍生作品所基于的开源项目及修改部分（依据GPL要求）
 
-### Prohibited Activities
+3.2 您可选择模板的授权方式：
 
-You agree not to use Foxi for any unlawful or prohibited activities, including but not limited to:
+    ​开源模式：绑定SPDX标准协议（如Apache 2.0、CC0等）
+    ​商业授权：设置最低售价（≥$1）并授权平台处理版权纠纷
 
-- Violating any applicable laws or regulations
-- Infringing on the intellectual property rights of others
-- Uploading or distributing viruses or malicious code
-- Interfering with the operation of the service
+3.3 平台有权移除以下内容：
 
-## Content
+    48小时内未通过协议检测的模板
+    收到3次以上侵权投诉且未能在72小时内举证的作品
 
-### Your Content
+4. 收益与分成
 
-You retain ownership of any content you upload to Foxi. By uploading content, you grant us a worldwide, royalty-free, and non-exclusive license to use, reproduce, and display your content for the purpose of operating and improving the service.
+4.1 用户模板的下载收入分配：
 
-### Our Content
+    ​基础分成：70%归上传者，30%为平台服务费
+    ​协议奖励：采用CC0协议的模板额外获得15%流量补贴
 
-All content provided by Foxi, including text, graphics, logos, and software, is the property of Foxi or its licensors and is protected by intellectual property laws. You may not use, reproduce, or distribute any of our content without our prior written permission.
+4.2 结算规则：
 
-## Payment and Billing
+    满$50可提现（PayPal/Stripe）
+    争议期：付款方可在下载后14天内申诉版权问题并冻结分成
 
-### Subscription Fees
 
-Certain features of Foxi may require a subscription. You agree to pay all applicable fees as described on our pricing page. Fees are non-refundable except as required by law.
+5. 侵权处理
 
-### Billing Information
+5.1 遵循DMCA反通知流程：
 
-You must provide accurate and up-to-date billing information. You authorize us to charge your payment method for the subscription fees.
+    投诉方需提供：①侵权内容URL ②权属证明 ③联系方式
+    平台将在5个工作日内下架争议模板并通知上传者
 
-## Termination
+5.2 恶意投诉责任：
 
-We may terminate or suspend your account and access to Foxi at any time, without prior notice, for conduct that we believe violates these terms or is harmful to other users of the service.
+    虚假投诉方须承担每次$300的追责保证金
 
-## Disclaimer of Warranties
+​6. 免责声明
 
-Foxi is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not warrant that the service will be uninterrupted or error-free.
+6.1 平台不担保：
 
-## Limitation of Liability
+    用户上传模板的代码安全性（建议使用沙箱环境运行）
+    开源协议的实时有效性（可能因项目更新发生变化）
 
-To the maximum extent permitted by law, Foxi shall not be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with your use of the service.
+6.2 您自行承担因以下行为导致的损失：
 
-## Governing Law
+    混合使用互不兼容的开源协议（如GPL与BSD）
+    未及时更新已变更授权条款的模板副本
 
-These terms are governed by and construed in accordance with the laws of the jurisdiction in which Foxi operates, without regard to its conflict of law principles.
 
-## Contact Information
 
-If you have any questions about these Terms of Service, please contact us at:
+7. 其他条款
 
-Email: support@foxi.com
-Address: 123 Foxi Lane, Productivity City, PC 12345
+7.1 管辖法律：
 
-## Miscellaneous
+    知识产权争议适用美国加利福尼亚州法律
+    用户分成纠纷适用新加坡国际商事法庭仲裁
 
-### Entire Agreement
+7.2 更新通知方式：
 
-These terms constitute the entire agreement between you and Foxi regarding the use of the service and supersede any prior agreements.
+    协议变更将写入模板元数据（通过校验工具提示）
+    重大条款更新通过GitHub issue公告
 
-### Severability
-
-If any provision of these terms is found to be invalid or unenforceable, the remaining provisions will remain in full force and effect.
-
-### Waiver
-
-Our failure to enforce any right or provision of these terms will not be considered a waiver of those rights.
-
-_Last updated: July 10, 2024_
