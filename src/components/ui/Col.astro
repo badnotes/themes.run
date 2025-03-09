@@ -14,8 +14,9 @@ type Props = {
 	spanMobile?: string
 	align?: string
 	classes?: string
+	spanMd?: string
 }
-const { span, spanMobile = '12', align, classes } = Astro.props
+const { span, spanMobile = '12', align, classes, spanMd = '6' } = Astro.props
 
 const hasContent = Astro.slots.default
 ---
@@ -24,6 +25,7 @@ const hasContent = Astro.slots.default
 	class:list={[
 		'col',
 		{ ['col-span-' + `${spanMobile}`]: spanMobile },
+		{ ['md:col-span-' + `${spanMd}`]: spanMd },
 		{ ['lg:col-span-' + `${span}`]: span },
 		{ ['text-' + `${align}`]: align },
 		{ [`${classes}`]: classes }

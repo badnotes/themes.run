@@ -34,7 +34,7 @@ const { data: allPosts, type: type } = Astro.props
 		</Col>
 		{
 			allPosts.map((post: any) => (
-				<Col span="3">
+				<Col span="3" spanMd="6">
 					<Post
 						link={`/${post.slug}`}
 						title={post.data.title}
