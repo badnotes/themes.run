@@ -35,7 +35,7 @@ export async function getStaticPaths({ paginate }: any) {
   const allPosts = (await getCollection("blog", ({ id }: any) => true));
   const formattedPosts = allPosts
   .filter(v => v.slug.startsWith(tp))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).map(v => {
+  .sort((a: any, b: any) => b.data.star - a.data.star).map(v => {
     const vs = v.slug.split("/")
     vs[vs.length-1] = vs[vs.length-1].substring(9)
     v.slug = vs.join("/")
