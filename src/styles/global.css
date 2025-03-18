@@ -62,7 +62,7 @@ h6 {
 	@apply text-base lg:text-lg;
 }
 main a {
-	@apply text-violet-600 hover:text-violet-400;
+	@apply text-violet-600 hover:text-violet-500;
 }
 .highlight {
 	@apply text-primary-500;

@@ -71,7 +71,7 @@ const {
 		<slot />
 	</CardBody>
 	</a>
-	<div class="grid grid-cols-12 border-t border-neutral-300 px-2 py-2 dark:border-neutral-800">
+	<div class="grid grid-cols-12 border-t border-neutral-100 px-2 py-2 dark:border-neutral-800">
 		{
 			tags && (
 				<div class="post-tags col-span-8">
@@ -84,9 +84,9 @@ const {
 	</div>
 	<div class="grid grid-cols-12 text-lg text-neutral-500 dark:text-neutral-500 dark:decoration-violet-800">
 		<div class="col-span-12 grid grid-cols-12">
-			<div class="col-span-3 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 ml-1 text-center">{price}</div>
-			<div class="col-span-3 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 ml-1 text-center">{license}</div>
-			<div class="col-span-3 bg-neutral-100 dark:bg-neutral-800 ml-1 text-center underline decoration-violet-300 dark:decoration-violet-500">
+			<div class="col-span-3 border-x border-slate-100 bg-neutral-200 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center">{price}</div>
+			<div class="col-span-3 border-x border-slate-100 bg-neutral-200 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center">{license}</div>
+			<div class="col-span-3 border-x border-slate-100 bg-neutral-200 dark:bg-neutral-800 text-center underline decoration-violet-300 dark:decoration-violet-500">
 				<a href={git} target="_blank">
 					<div class="flex items-center justify-center">
 						<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24"><path fill="currentColor" d="M13.51 3.139c-.652-1.185-2.368-1.185-3.021 0a28 28 0 0 0-2.114 4.894a.35.35 0 0 1-.33.223a30 30 0 0 0-4.375.436c-1.337.233-1.926 1.837-.91 2.83q.192.188.388.374a32 32 0 0 0 3.103 2.587a.274.274 0 0 1 .11.31a27.6 27.6 0 0 0-1.172 5.065c-.19 1.424 1.318 2.298 2.495 1.694a29.3 29.3 0 0 0 4.085-2.537a.4.4 0 0 1 .462 0a29 29 0 0 0 4.085 2.537c1.177.604 2.685-.27 2.495-1.694a27.6 27.6 0 0 0-1.171-5.065a.274.274 0 0 1 .11-.31a32 32 0 0 0 3.49-2.96c1.016-.994.427-2.598-.91-2.831a30 30 0 0 0-4.376-.436a.35.35 0 0 1-.329-.223a27.7 27.7 0 0 0-2.114-4.894"/></svg>
@@ -94,7 +94,7 @@ const {
 					</div>
 				</a>
 			</div>
-			<div class="col-span-3 bg-neutral-100 dark:bg-neutral-800 ml-1 text-center underline decoration-violet-300 dark:decoration-violet-500">
+			<div class="col-span-3 border-x border-slate-100 bg-neutral-200 dark:bg-neutral-800 text-center underline decoration-violet-300 dark:decoration-violet-500">
 				<a href={web} target="_blank">Demo</a>
 			</div>
 		</div>
