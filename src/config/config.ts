@@ -24,7 +24,7 @@ export const configData: Config = {
 	siteTitle: 'Themes. The themes.run, your creative accelerator. ',
 	siteDescription:
 		'The themes.run, from template to masterpiece, just a little inspiration from you..',
-	ogImage: '/og.jpg',
+	ogImage: '/logo.png',
 	logo: {
 		src: '/logo.png',
 		alt: 'Themes.run. logo'
