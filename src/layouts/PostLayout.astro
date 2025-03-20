@@ -34,7 +34,7 @@ const SEO = {
 	<div class="post-body basic-text basic-text--lg">
 
 		<div class="grid grid-cols-10 gap-2 mt-5 mb-6">
-		  <img class="blog-img-view bg-white col-span-10 md:col-span-8 h-auto w-full max-w-full rounded-lg object-cover object-center md:h-[500px]  p-0.5 bg-stone-100"
+		  <img class="blog-img-view col-span-10 md:col-span-8 h-auto w-full max-w-full rounded-lg object-cover object-center md:h-[500px]  p-0.5 bg-stone-100 dark:bg-stone-600"
 			  src={frontmatter.images[0].src} 
 			  alt={frontmatter.images[0].alt} />
 		  <div class="grid gap-1 col-span-10 grid-cols-5 md:grid-cols-1 md:grid-rows-5 md:col-span-2 ml-auto">
@@ -42,7 +42,7 @@ const SEO = {
 			  return(
 				  <img
 					src={el.src}
-					class="blog-img-button border object-cover object-center h-24 w-40 max-w-full rounded-lg cursor-pointer p-0.5 bg-stone-100 " 
+					class="blog-img-button border object-cover object-center h-24 w-40 max-w-full rounded-lg cursor-pointer p-0.5 bg-stone-100 dark:bg-stone-600" 
 					alt={el.alt} />
 			  )})}
 		  </div>
@@ -53,7 +53,7 @@ const SEO = {
 				<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center">{frontmatter.license}</div>
 			</div>
 			<div class="col-span-6 grid grid-cols-12 underline decoration-violet-300 gap-2">
-				<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center">
+				<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center decoration-violet-300 dark:decoration-violet-500">
 					<a href={frontmatter.git} target="_blank">
 						<div class="flex items-center justify-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24"><path fill="currentColor" d="M13.51 3.139c-.652-1.185-2.368-1.185-3.021 0a28 28 0 0 0-2.114 4.894a.35.35 0 0 1-.33.223a30 30 0 0 0-4.375.436c-1.337.233-1.926 1.837-.91 2.83q.192.188.388.374a32 32 0 0 0 3.103 2.587a.274.274 0 0 1 .11.31a27.6 27.6 0 0 0-1.172 5.065c-.19 1.424 1.318 2.298 2.495 1.694a29.3 29.3 0 0 0 4.085-2.537a.4.4 0 0 1 .462 0a29 29 0 0 0 4.085 2.537c1.177.604 2.685-.27 2.495-1.694a27.6 27.6 0 0 0-1.171-5.065a.274.274 0 0 1 .11-.31a32 32 0 0 0 3.49-2.96c1.016-.994.427-2.598-.91-2.831a30 30 0 0 0-4.376-.436a.35.35 0 0 1-.329-.223a27.7 27.7 0 0 0-2.114-4.894"/></svg>
@@ -61,7 +61,7 @@ const SEO = {
 						</div>
 					</a>
 				</div>
-				<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center">
+				<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center decoration-violet-300 dark:decoration-violet-500">
 					<a href={frontmatter.web} target="_blank">Demo</a>
 				</div>
 	
