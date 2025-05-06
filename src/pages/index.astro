@@ -3,10 +3,7 @@
 // - Layout
 import Layout from '../layouts/Layout.astro'
 // - UI
-import Hero from '../components/blocks/hero/HomeCTA.astro'
 import Features from '../components/blocks/features/FeatureTechs.astro'
-import Testimonial from '../components/blocks/testimonials/BasicDark.astro'
-import HighlightBlocks from '../components/blocks/highlights/HightlightRows.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
 import { getCollection } from 'astro:content'
 
@@ -15,11 +12,7 @@ const types = ["astro", "next", "hugo", "jekyll", "wordpress", "hexo", "obsidian
 const allPosts = (await getCollection("blog", ({ id }: any) => true));
 const typeCount = types.map((t: any) => allPosts.filter(v => v.slug.startsWith(t)).length)
 	
-// console.log("astor size:", typeCount)
-
 // Content
-// - Testimonial background
-// import testimonialBackground from '../assets/testimonial-bg-01.webp'
 // - SEO
 const SEO = {
 	title: 'Themes.run | The themes.run, your creative accelerator. ',
