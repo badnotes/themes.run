@@ -75,6 +75,13 @@ const SEO = {
 			</div>
 		</div>
 		)}
+		{isArticle && (
+		<div class="mt-5 mb-6">
+		  <img class="blog-img-view col-span-10 md:col-span-8 h-auto w-full max-w-full rounded-lg object-cover object-center md:h-[500px]  p-0.5 bg-stone-100 dark:bg-stone-600"
+			  src={frontmatter.image} 
+			  alt={frontmatter.title} />
+		</div>
+		)}
 		<div class="mb-10"></div>
 
 		<slot />

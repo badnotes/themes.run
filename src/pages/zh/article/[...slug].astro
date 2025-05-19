@@ -15,10 +15,8 @@ export async function getStaticPaths() {
 	const blogEntries = allPosts.filter(v => v.slug.startsWith(lang))
 
 	return blogEntries.map((entry) => {
-		console.log(entry)
 		const vs = entry.slug.replace(lang, "").slice(1).split("/")
     	const slug = vs[1]
-		console.log(slug)
 		return {
 			// params:{ id: decodeURI( entry.id )},
 			params: { slug: slug },

@@ -8,7 +8,7 @@ body {
 
 /* Main typography */
 p {
-	@apply mb-3 last:mb-0;
+	@apply my-3 last:mb-0;
 }
 h1,
 h2,
@@ -76,6 +76,17 @@ main a {
 }
 .basic-text--lg {
 	@apply text-lg leading-relaxed [&_blockquote]:text-xl [&_blockquote]:leading-loose;
+}
+
+.basic-text li>ul>li {
+	list-style-type: circle;
+}
+.basic-text li>ul>li::marker {
+  	color: #444;
+}
+
+code {
+	color: #ec0085;
 }
 
 /* Scroll animations */
