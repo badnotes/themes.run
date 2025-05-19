@@ -1,0 +1,34 @@
+---
+// Blog Post Page
+// ------------
+// Description: The blog post page.
+
+// Components
+// - Layout
+import Layout from '../../../layouts/PostLayout.astro'
+
+// Data
+import { getCollection, render  } from 'astro:content'
+export async function getStaticPaths() {
+	const lang = "zh"
+	const allPosts = (await getCollection("article", ({ id }: any) => true));
+	const blogEntries = allPosts.filter(v => v.slug.startsWith(lang))
+
+	return blogEntries.map((entry) => {
+		console.log(entry)
+		const vs = entry.slug.replace(lang, "").slice(1).split("/")
+    	const slug = vs[1]
+		console.log(slug)
+		return {
+			// params:{ id: decodeURI( entry.id )},
+			params: { slug: slug },
+			props: { entry }
+		}})
+}
+const { entry } = Astro.props
+const { Content } = await render(entry);
+---
+
+<Layout frontmatter={entry.data} contentType='Article' isArticle={true}}>
+	<Content />
+</Layout>

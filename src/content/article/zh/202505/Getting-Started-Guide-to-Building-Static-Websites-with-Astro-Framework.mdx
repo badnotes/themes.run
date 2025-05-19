@@ -1,0 +1,287 @@
+---
+title: '使用 Astro 框架构建静态网站的入门指南'
+description: ''
+pubDate: '2025-05-19'
+image: '/article/astro.jpg'
+categories: ['入门指南']
+author: 'fyme'
+tags: ['Astro']
+type: 'Article'
+---
+
+
+### 一、为什么选择 Astro
+##### 1.1 现代静态站点生成器的优势
+
+Astro 作为新一代静态站点生成器（SSG），结合了现代前端开发的诸多优势：
+- 组件化开发：支持 React/Vue/Svelte 等框架组件
+- 零 JS 默认：默认输出纯静态 HTML/CSS
+- 按需加载：采用 **离岛** 架构实现智能加载
+- 多源支持：无缝集成 Markdown/MDX/API 等数据源
+
+##### 1.2 Astro 的核心特性
+
+- 简单高效智能内容处理 （加载本地 Markdown 根据模板渲染展示）
+
+```astro
+---
+// 服务端逻辑
+const posts = await Astro.glob('./posts/*.md');
+---
+<!-- 模板部分 -->
+{posts.map(post => (
+  <BlogPost {...post.frontmatter} />
+))}
+```
+
+### 二、开始吧，项目初始化与配置
+##### 2.1 环境准备 (需预先安装NodeJS环境，此处略)
+
+```bash
+npm create astro@latest my-blog
+cd my-blog
+npm install
+```
+
+##### 2.2 目录结构解析
+
+```bash
+src/
+├── components/      # 可复用组件
+├── layouts/         # 页面布局模板
+├── pages/           # 路由页面
+├── content/         # Markdown 内容
+└── styles/          # 全局样式
+```
+
+### 三、模板系统设计与实现
+##### 3.1 基础布局模板
+
+src/layouts/BaseLayout.astro
+
+```astro
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "默认描述" } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav>
+      <a href="/">首页</a>
+      <a href="/about">关于</a>
+    </nav>
+  </header>
+  
+  <main>
+    <slot /> <!-- 内容插槽 -->
+  </main>
+  
+  <footer class="site-footer">
+    <p>© 2024 我的博客</p>
+  </footer>
+</body>
+</html>
+```
+
+##### 3.2 文章详情模板
+
+src/layouts/PostLayout.astro
+
+```astro
+
+---
+import BaseLayout from './BaseLayout.astro';
+const { frontmatter } = Astro.props;
+---
+<BaseLayout title={frontmatter.title} description={frontmatter.excerpt}>
+  <article class="post-content">
+    <h1>{frontmatter.title}</h1>
+    <time>{frontmatter.pubDate}</time>
+    <slot />
+  </article>
+</BaseLayout>
+```
+
+### 四、内容管理系统集成
+##### 4.1 Markdown 内容处理
+
+src/content/posts/first-post.md
+
+```markdown
+
+---
+title: "我的第一篇博文"
+pubDate: 2024-03-15
+excerpt: "这是文章的摘要内容"
+---
+
+# 欢迎来到我的博客
+
+这是使用 Astro 构建的第一篇文章...
+```
+
+##### 4.2 动态路由配置
+
+src/pages/posts/[...slug].astro
+
+```astro
+
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+export async function getStaticPaths() {
+  const posts = await Astro.glob('../content/posts/*.md');
+  return posts.map(post => ({
+    params: { slug: post.frontmatter.slug },
+    props: { post },
+  }));
+}
+const { post } = Astro.props;
+---
+<PostLayout frontmatter={post.frontmatter}>
+  <article set:html={post.compiledContent()} />
+</PostLayout>
+```
+
+### 五、高级功能扩展
+##### 5.1 标签分类系统
+
+```astro
+
+---
+const posts = await Astro.glob('./posts/*.md');
+const tagMap = new Map();
+posts.forEach(post => {
+  post.frontmatter.tags?.forEach(tag => {
+    tagMap.set(tag, [...(tagMap.get(tag) || []), post]);
+  });
+});
+---
+<section class="tag-cloud">
+  {Array.from(tagMap).map(([tag, posts]) => (
+    <a href={`/tags/${tag}`} class="tag">{tag} ({posts.length})</a>
+  ))}
+</section>
+```
+
+##### 5.2 搜索功能实现
+
+```astro
+
+---
+// 生成搜索索引
+const searchData = posts.map(post => ({
+  title: post.frontmatter.title,
+  content: post.compiledContent(),
+  url: `/posts/${post.frontmatter.slug}`
+}));
+---
+<script>
+// 客户端搜索逻辑
+const fuse = new Fuse(searchData, { keys: ['title', 'content'] });
+function handleSearch(e) {
+  const results = fuse.search(e.target.value);
+  // 更新结果列表...
+}
+</script>
+```
+
+### 六、性能优化实践
+##### 6.1 图片优化策略
+
+```js
+---
+import { Image } from '@astrojs/image/components';
+---
+<Image 
+src="/images/cover.jpg"
+alt="文章封面"
+widths={[400, 800, 1200]}
+sizes="(max-width: 768px) 100vw, 50vw"
+formats={['avif', 'webp', 'jpeg']}
+/>
+```
+
+##### 6.2 构建优化配置
+
+astro.config.mjs
+
+```javascript
+
+export default defineConfig({
+  adapter: '@astrojs/netlify',
+  output: 'static',
+  compressHTML: true,
+  integrations: [
+    sitemap(),
+    prefetch()
+  ]
+});
+```
+
+### 七、部署与持续集成
+##### 7.1 GitHub Pages 部署
+
+.github/workflows/deploy.yml
+
+```yaml
+
+name: Deploy
+on:
+  push:
+    branches: [main]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: npm run build
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+```
+
+##### 7.2 Vercel 一键部署
+bash
+
+npm install -g vercel
+vercel
+
+### 八、最佳实践建议
+
+    组件拆分策略：保持组件单一职责
+
+    样式管理方案：推荐使用 CSS Modules
+
+    内容更新流程：结合 Git 工作流管理
+
+    SEO 优化：合理使用 Schema 结构化数据
+
+    访问统计：集成 Plausible 或 Umami
+
+### 总结
+
+通过本文的实践指南，我们完整实现了：
+
+    基于 Astro 的模板系统架构设计
+
+    Markdown 内容管理系统集成
+
+    动态路由与分类系统实现
+
+    现代化前端优化实践
+
+    自动化部署流程配置
+

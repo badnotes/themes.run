@@ -26,6 +26,21 @@ const blog = defineCollection({
 		})
 })
 
+const article = defineCollection ({
+	type: "content", 
+	schema: () => z.object({
+		title: z.string(),
+		description: z.string(),
+		pubDate: z.coerce.date(),
+		updatedDate: z.coerce.date().optional(),
+		image: z.string().optional(),
+		categories: z.array(z.string()).default(['others']),
+		tags: z.array(z.string()).default(['others']),
+		author: z.string().optional(), // 作者
+		type: z.string().optional(), // 类别
+	})
+})
+
 export const collections = {
-	blog
+	blog, article
 }

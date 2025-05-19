@@ -8,6 +8,11 @@
 - WordPress
 - Obsidian
 
+### Feature
+
+- [Todo] TOC https://github.com/theisel/astro-toc
+
+
 
 from Astro Theme - Foxi
 

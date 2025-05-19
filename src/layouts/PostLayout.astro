@@ -1,6 +1,6 @@
 ---
 // Imports
-const { frontmatter, contentType } = Astro.props
+const { frontmatter, contentType, isArticle } = Astro.props
 
 //Layout Components
 import Layout from './Layout.astro'
@@ -33,6 +33,7 @@ const SEO = {
 	<div class="border border-slate-300 border-b-0 mt-0"></div>
 	<div class="post-body basic-text basic-text--lg">
 
+		{!isArticle && (
 		<div class="grid grid-cols-10 gap-2 mt-5 mb-6">
 		  <img class="blog-img-view col-span-10 md:col-span-8 h-auto w-full max-w-full rounded-lg object-cover object-center md:h-[500px]  p-0.5 bg-stone-100 dark:bg-stone-600"
 			  src={frontmatter.images[0].src} 
@@ -47,7 +48,7 @@ const SEO = {
 			  )})}
 		  </div>
 		</div>
-		<div class="grid grid-cols-12 gap-2 text-lg text-neutral-500 dark:text-neutral-500 dark:decoration-violet-800 mb-10">
+		<div class="grid grid-cols-12 gap-2 text-lg text-neutral-500 dark:text-neutral-500 dark:decoration-violet-800">
 			<div class="col-span-6 grid grid-cols-12 gap-2">
 				<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center">{frontmatter.price}</div>
 				<div class="col-span-6 bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500 text-center">{frontmatter.license}</div>
@@ -73,6 +74,8 @@ const SEO = {
 				<!-- </div> -->
 			</div>
 		</div>
+		)}
+		<div class="mb-10"></div>
 
 		<slot />
 	</div>

@@ -1,0 +1,69 @@
+---
+// Blog Index Page
+// ------------
+// Description: The blog index page.
+
+// Components
+// - Layout
+import Layout from '../../layouts/Layout.astro'
+// - UI
+import Hero from '../../components/blocks/hero/PageHeader.astro'
+import BlogPosts from '../../components/blocks/blog/BlogPosts.astro'
+import Pagination from '../../components/ui/Pagination.astro'
+
+// Data
+import { getCollection } from 'astro:content'
+import type { Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+// Content
+// - SEO
+const SEO = {
+	title: 'Themes | Astro themes.',
+	description:
+		"Astro is a JavaScript web framework optimized for building fast, content-driven websites. "
+}
+// - Page Header
+const header = {
+	title: '<strong>Astro</strong> is a JavaScript web framework optimized for building fast, content-driven websites.',
+	text: '<strong>npm create astro@latest -- --template &lt;github-username&gt;/&lt;github-repo&gt;</strong>'
+}
+
+// const allPosts = await getCollection('blog')
+
+export async function getStaticPaths({ paginate }: any) {
+  const lang = "en"
+  const allPosts = (await getCollection("article", ({ id }: any) => true));
+  const formattedPosts = allPosts
+  .filter(v => v.slug.startsWith(lang))
+  .sort((a: any, b: any) => b.data.pubDate - a.data.pubDate)
+  .map(v => {
+    const vs = v.slug.replace(lang, "").slice(1).split("/")
+    v.slug = ["article", vs[1]].join("/")
+    return v;
+  });
+  
+  return paginate(formattedPosts, {
+      pageSize: 12,
+  });
+}
+interface Props {
+	page: Page<CollectionEntry<"article">>;
+}
+
+const { page } = Astro.props;
+---
+
+<Layout title={SEO.title} description={SEO.description}>
+	<Hero title={header.title} text={header.text} />
+	<BlogPosts data={page.data} type="article" isArticle={true} />
+	<Pagination
+    length={page.lastPage}
+    currentUrl={page.url.current}
+    currentPage={page.currentPage}
+    firstUrl={`/`}
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+    lastUrl={`/${page.lastPage}`}
+    typ="article"
+  />
+</Layout>
