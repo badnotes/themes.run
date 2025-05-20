@@ -56,8 +56,8 @@ const { title = '', subtitle, titleSize = 'lg', image, icon, link, type, classes
 	<CardBody>
 		{
 			title && (
-				<h4 class:list={[['text-' + `${titleSize} ` + `lg:text` + `${titleSize}`]]}>{title}</h4>
-			)
+					<h4 class:list={[['text-' + `${titleSize} ` + `lg:text` + `${titleSize}`, 'relative inline-block hover:after:w-full mb-0']]}>{title}</h4>
+				)
 		}
 		{subtitle && <p>{subtitle}</p>}
 		<slot />
@@ -66,5 +66,11 @@ const { title = '', subtitle, titleSize = 'lg', image, icon, link, type, classes
 <style>
 	.card__icon {
 		@apply inline-block size-6 shrink-0 text-primary-500;
+	}
+	h4::after {
+		@apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300;
+	}
+	.card:hover h4::after {
+		@apply w-full;
 	}
 </style>
