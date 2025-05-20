@@ -18,7 +18,7 @@ import TagNavigation from '../../../components/ui/blog/TagNavigation.astro'
 type Props = {
 	data: any
 	type: string,
-	isArticle: boolean
+	isArticle?: boolean
 }
 const { data: allPosts, type: type, isArticle: isArticle } = Astro.props
 
@@ -48,7 +48,7 @@ const { data: allPosts, type: type, isArticle: isArticle } = Astro.props
 						star={post.data.star}
 						web={post.data.web}
 						typ={type}
-						isArticle={isArticle}
+						isArticle={isArticle || false}
 					>
 						{/* <span class="small">{post.data.description}</span> */}
 					</Post>

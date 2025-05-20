@@ -55,7 +55,7 @@ const { page } = Astro.props;
 
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} />
-	<BlogPosts data={page.data} type="hugo"/>
+	<BlogPosts data={page.data} type="hugo" />
 	<Pagination
     length={page.lastPage}
     currentUrl={page.url.current}
@@ -64,5 +64,6 @@ const { page } = Astro.props;
     prevUrl={page.url.prev}
     nextUrl={page.url.next}
     lastUrl={`/${page.lastPage}`}
+    typ="hugo"
   />
 </Layout>

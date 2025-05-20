@@ -24,7 +24,7 @@ const { logo, navItems, navActions } = navigationBarData
 // Determine current path
 const path = new URL(Astro.request.url).pathname
 function isActivePath(currentPath: string): boolean {
-	return path === currentPath || path === `${currentPath}/`
+	return path === currentPath || path === `${currentPath}/` || path.startsWith(currentPath) && currentPath !== "/"
 }
 
 // Type assertion for navActions to ensure type safety

@@ -24,8 +24,9 @@ type Props = {
 	author?: string
 	publishDate?: string
 	tp: string
+	description?: string
 }
-const { tags, title, author, publishDate, tp } = Astro.props
+const { tags, title, author, publishDate, tp, description } = Astro.props
 ---
 
 <Section id="post-intro" classes="bg-neutral-50 dark:bg-neutral-900">
@@ -34,15 +35,20 @@ const { tags, title, author, publishDate, tp } = Astro.props
 			<header class="post-header">
 				<!-- <Breadcrumbs classes="mb-6" /> -->
 				<h3 class="post-header__title">
-					{title}
+					<strong>{tp.charAt(0).toUpperCase() + tp.slice(1)} theme : {title}</strong>
 				</h3>
 				{
-					author ? (
+					// author ? (
+					// 	<p class="page-header__text">
+					// 		Author: {author} {publishDate && 'on ' + publishDate}
+					// 	</p>
+					// ) : (
+					// 	publishDate && <p class="page-header__text">Published on, {publishDate}</p>
+					// )
+					description && (
 						<p class="page-header__text">
-							Author: {author} {publishDate && 'on ' + publishDate}
+							{description}
 						</p>
-					) : (
-						publishDate && <p class="page-header__text">Published on, {publishDate}</p>
 					)
 				}
 			</header>
