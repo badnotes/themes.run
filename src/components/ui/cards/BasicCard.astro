@@ -28,21 +28,21 @@ type Props = {
 	image?: any
 	icon?: string
 	link?: string
-	type?: 'image-top' | 'image-bottom'
+	type?: 'image-top' | 'image-bottom' | 'image-left'
 	classes?: string
 }
 const { title = '', subtitle, titleSize = 'lg', image, icon, link, type, classes } = Astro.props
 ---
 
-<Card classes={classes} link={link}>
+<Card classes={classes} link={link} imageLeft={type === 'image-left'}>
 	{
 		image && (
 			<Image
 				src={image}
 				alt={title}
-				class={type === 'image-bottom' ? ' h-56' : 'h-56'}
-				width={600}
-				height={400}
+				class={type === 'image-bottom' ? ' h-44 w-full' : 'h-44 w-full'}
+				width={300}
+				height={200}
 			/>
 		)
 	}

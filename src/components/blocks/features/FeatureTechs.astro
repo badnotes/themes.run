@@ -10,6 +10,7 @@ import Row from '../../ui/Row.astro'
 import Col from '../../ui/Col.astro'
 // - UI
 import Card from '../../ui/cards/FeatureCard.astro'
+import { getCollection } from 'astro:content'
 
 // Content
 // - Cards
@@ -22,13 +23,32 @@ import obsidian from '../../../assets/cards/obsidian.webp'
 import next from '../../../assets/cards/next.webp'
 
 // Props
-type Props = {
-	typeCount: number[]
-}
-const { typeCount: typeCount} = Astro.props
+// type Props = {
+// 	typeCount: number[]
+// }
+// const { typeCount: typeCount} = Astro.props
 
 const title = "The <strong>themes.run</strong>, your creative accelerator. "
 const text = "From template to masterpiece, just a little inspiration from you."
+
+
+const types = ["astro", "next", "hugo", "jekyll", "wordpress", "hexo", "obsidian"]
+const allPosts = (await getCollection("blog", ({ id }: any) => true));
+const typeCount = types.map((t: any) => allPosts.filter(v => v.slug.startsWith(t)).length)
+
+const latest = allPosts
+.sort((a: any, b: any) => {
+	const a1 = a.slug.split("/")[1].split("-")[0]
+	const b1 = b.slug.split("/")[1].split("-")[0]
+	return b1 - a1;
+})
+.map(v => {
+    const vs = v.slug.split("/")
+    vs[vs.length-1] = vs[vs.length-1].substring(9)
+    v.slug = vs.join("/")
+    return v;
+  }).slice(0, 4);
+
 ---
 
 <Section id="hero" classes=`bg-neutral-50 dark:bg-neutral-900`>
@@ -43,62 +63,85 @@ const text = "From template to masterpiece, just a little inspiration from you."
 </Section>
 <div class="border border-slate-300 border-b-0 mt-0"></div>
 <Section id="features">
-	<Row>
-		<Col span="3" classes="flex flex-col gap-6">
-			<Card
-				title=`Theme collection: Astro [ ${typeCount[0]} ]`
-				subtitle="Astro is a JavaScript web framework optimized for building fast, content-driven websites."
-				image={logoAstro}
-				link="/astro"
-			/>
-		</Col>
-		<Col span="3" classes="flex flex-col gap-6">
-			<Card
-				title=`Theme collection: Next.js [ ${typeCount[1]} ]`
-				subtitle="The React Framework for the Web."
-				image={next}
-				link="/next"
-			/>
-		</Col>
-		<Col span="3" classes="flex flex-col gap-6">
-			<Card
-				title=`Theme collection: GoHugo [ ${typeCount[2]} ]`
-				subtitle="The world's fastest framework for building websites."
-				image={feature04}
-				link="/hugo"
-			/>
-		</Col>
-		<Col span="3" classes="flex flex-col gap-6">
-			<Card
-				title=`Theme collection: Jekyll [ ${typeCount[3]} ]`
-				subtitle="Jekyll • Simple, blog-aware, static sites."
-				image={logJekyll}
-				link="/jekyll"
-			/>
-		</Col>
-		<Col span="3" classes="flex flex-col gap-6">
-			<Card
-				title=`Theme collection: WordPress [ ${typeCount[4]} ]`
-				subtitle="Build a Site, Sell Your Stuff, Start a Blog & More."
-				image={logPress}
-				link="/wordpress"
-			/>
-		</Col>
-		<Col span="3" classes="flex flex-col gap-6">
-			<Card
-				title=`Theme collection: Hexo [ ${typeCount[5]} ]`
-				subtitle="Hexo is a fast, simple & powerful blog framework powered by Node.js."
-				image={logHexo}
-				link="/hexo"
-			/>
-		</Col>
-		<Col span="3" classes="flex flex-col gap-6">
-			<Card
-				title=`Theme collection: Obsidian [ ${typeCount[6]} ]`
-				subtitle="Sharpen your thinking. · Your thoughts are yours."
-				image={obsidian}
-				link="/obsidian"
-			/>
-		</Col>
-	</Row>
+	<div class="grid gap-20 px-2 md:px-20 lg:px-10 xl:px-20">
+		<Row>
+			<Col span="12">
+				<div class="text-2xl">Latest Themes</div>
+			</Col>
+			{
+				latest.map(post => (
+					<Col span="3" classes="flex flex-col">
+						<Card
+							title={post.data.title}
+							subtitle={post.data.description}
+							image={post.data.image}
+							link={post.slug}
+						/>
+					</Col>
+				))
+			}
+		</Row>
+		<Row>
+			<Col span="12">
+				<div class="text-2xl">Theme Collection</div>
+			</Col>
+			<Col span="3" classes="flex flex-col">
+				<Card
+					title=`Astro Theme Count: ${typeCount[0]}`
+					subtitle="Astro is a JavaScript web framework optimized for building fast, content-driven websites."
+					image={logoAstro}
+					link="/astro"
+				/>
+			</Col>
+			<Col span="3" classes="flex flex-col">
+				<Card
+					title=`GoHugo Theme Count: ${typeCount[2]}`
+					subtitle="The world's fastest framework for building websites."
+					image={feature04}
+					link="/hugo"
+				/>
+			</Col>
+			<Col span="3" classes="flex flex-col">
+				<Card
+					title=`Next.js Theme Count: ${typeCount[1]}`
+					subtitle="The React Framework for the Web."
+					image={next}
+					link="/next"
+				/>
+			</Col>
+			<Col span="3" classes="flex flex-col">
+				<Card
+					title=`Jekyll Theme Count: ${typeCount[3]}`
+					subtitle="Jekyll • Simple, blog-aware, static sites."
+					image={logJekyll}
+					link="/jekyll"
+				/>
+			</Col>
+			<Col span="3" classes="flex flex-col">
+				<Card
+					title=`WordPress Theme Count: ${typeCount[4]}`
+					subtitle="Build a Site, Sell Your Stuff, Start a Blog & More."
+					image={logPress}
+					link="/wordpress"
+				/>
+			</Col>
+			<Col span="3" classes="flex flex-col">
+				<Card
+					title=`Hexo Theme Count: ${typeCount[5]}`
+					subtitle="Hexo is a fast, simple & powerful blog framework powered by Node.js."
+					image={logHexo}
+					link="/hexo"
+				/>
+			</Col>
+			<Col span="3" classes="flex flex-col">
+				<Card
+					title=`Obsidian Theme Count:  ${typeCount[6]}`
+					subtitle="Sharpen your thinking. · Your thoughts are yours."
+					image={obsidian}
+					link="/obsidian"
+				/>
+			</Col>
+		</Row>
+		
+	</div>
 </Section>

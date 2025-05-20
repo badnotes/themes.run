@@ -5,12 +5,8 @@ import Layout from '../layouts/Layout.astro'
 // - UI
 import Features from '../components/blocks/features/FeatureTechs.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
-import { getCollection } from 'astro:content'
 
 
-const types = ["astro", "next", "hugo", "jekyll", "wordpress", "hexo", "obsidian"]
-const allPosts = (await getCollection("blog", ({ id }: any) => true));
-const typeCount = types.map((t: any) => allPosts.filter(v => v.slug.startsWith(t)).length)
 	
 // Content
 // - SEO
@@ -22,6 +18,6 @@ const SEO = {
 
 <Layout title={SEO.title} description={SEO.description}>
 
-	<Features typeCount={typeCount}/>
+	<Features />
 	<CTA />
 </Layout>

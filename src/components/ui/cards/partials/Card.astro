@@ -10,23 +10,27 @@
 type Props = {
 	link?: string
 	classes?: string
+	imageLeft?: boolean
 }
-const { link, classes } = Astro.props
+const { link, classes, imageLeft } = Astro.props
 ---
 
 {
 	link ? (
-		<a href={link} class:list={['card', { [`${classes}`]: classes }]}>
+		<a href={link} class:list={[ imageLeft || false ? 'card-left': 'card', { [`${classes}`]: classes }]}>
 			<slot />
 		</a>
 	) : (
-		<div class:list={['card', { [`${classes}`]: classes }]}>
+		<div class:list={[ imageLeft || false ? 'card-left': 'card', { [`${classes}`]: classes }]}>
 			<slot />
 		</div>
 	)
 }
 <style>
 	.card {
-		@apply flex-none flex-col overflow-hidden rounded border border-neutral-100 bg-white text-neutral-600 shadow-lg shadow-neutral-700/5 dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-neutral-950/50;
+		@apply flex-none flex-col overflow-hidden rounded border border-neutral-100 bg-white text-neutral-500 shadow-lg shadow-neutral-700/5 dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-neutral-950/50;
+	}
+	.card-left {
+		@apply grid grid-cols-2 overflow-hidden rounded border border-neutral-100 bg-white text-neutral-500 shadow-lg shadow-neutral-700/5 dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-neutral-950/50;
 	}
 </style>
