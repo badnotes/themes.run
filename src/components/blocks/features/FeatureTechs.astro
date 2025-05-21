@@ -76,7 +76,9 @@ const latest = allPosts
 							subtitle={post.data.description}
 							image={post.data.image}
 							link={post.slug}
-						/>
+						>
+						</Card>
+						<div class="flex justify-end items-end px-2 pb-2 -mt-5 z-0 bg-slate-100">{post.data.type}</div>
 					</Col>
 				))
 			}
