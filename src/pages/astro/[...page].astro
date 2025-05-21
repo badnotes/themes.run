@@ -16,16 +16,21 @@ import { getCollection } from 'astro:content'
 import type { Page } from "astro";
 import type { CollectionEntry } from "astro:content";
 // Content
+
+const tp = "astro"
+const allPosts = (await getCollection("blog", ({ id }: any) => true));
+const formattedPosts = allPosts.filter(v => v.slug.startsWith(tp))
+
 // - SEO
 const SEO = {
-	title: 'Themes | Astro themes.',
+	title: 'Themes | Astro Themes & Templates.',
 	description:
-		"Astro is a JavaScript web framework optimized for building fast, content-driven websites. "
+		"Number of free and high-quality Astro themes, templates and components, covering multiple scenarios such as corporate websites, personal blogs, portfolios, e-commerce, etc."
 }
 // - Page Header
 const header = {
-	title: '<strong>Astro</strong> is a JavaScript web framework optimized for building fast, content-driven websites.',
-	text: '<strong>npm create astro@latest -- --template &lt;github-username&gt;/&lt;github-repo&gt;</strong>'
+	title: `<strong>Astro</strong> Themes & Templates`,
+	text: 'Number of free and high-quality Astro themes, templates and components, covering multiple scenarios such as corporate websites, personal blogs, portfolios, e-commerce, etc.'
 }
 
 // const allPosts = await getCollection('blog')
