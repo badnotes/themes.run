@@ -51,7 +51,7 @@ const latest = allPosts
 
 ---
 
-<Section id="hero" classes=`bg-neutral-50 dark:bg-neutral-900`>
+<Section id="hero" classes=`bg-neutral-50 dark:bg-neutral-800`>
 	<Row>
 		<Col span="12" align="center">
 			<header class="page-header">
@@ -61,7 +61,7 @@ const latest = allPosts
 		</Col>
 	</Row>
 </Section>
-<div class="border border-slate-300 border-b-0 mt-0"></div>
+<div class="border border-slate-300 dark:border-slate-700 border-b-0 mt-0"></div>
 <Section id="features">
 	<div class="grid gap-5 px-2 md:px-20 lg:px-10 xl:px-20">
 		<Row>
@@ -78,7 +78,7 @@ const latest = allPosts
 							link={post.slug}
 						>
 						</Card>
-						<div class="flex justify-end items-end px-2 pb-2 -mt-5 z-0 bg-slate-100">{post.data.type}</div>
+						<div class="flex justify-end items-end px-2 pb-2 -mt-5 z-0 bg-slate-100 dark:bg-neutral-900">{post.data.type}</div>
 					</Col>
 				))
 			}
